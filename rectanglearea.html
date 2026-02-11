@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area of Rectangle</title>
+</head>
+<body>
+
+<h2 id="output"></h2>
+
+<script>
+    class Rectangle {
+        constructor(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        area() {
+            let a = this.length * this.width;
+            this.display(a);
+        }
+
+        display(area) {
+            document.getElementById("output").innerHTML =
+                "Length: " + this.length + "<br>" +
+                "Width: " + this.width + "<br>" +
+                "Area of Rectangle: " + area;
+        }
+    }
+
+    let length = parseFloat(prompt("Enter the length of rectangle:"));
+    let width = parseFloat(prompt("Enter the width of rectangle:"));
+
+    let r = new Rectangle(length, width);
+    r.area();
+</script>
+
+</body>
+</html>
