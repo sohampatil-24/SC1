@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <form id="f">
+        <input id="i" placeholder="Enter text">
+        <button type="submit">Go</button>
+    </form>
+    
+    <p id="m"></p>
+
+    <script>
+        // EVENT: Listens for the form submission
+        document.getElementById('f').onsubmit = function(e) {
+            e.preventDefault(); 
+            const val = document.getElementById('i').value;
+            const msg = document.getElementById('m');
+
+            // EXCEPTION: Validates using try/catch
+            try {
+                if (val === "") throw "Empty!";
+                if (val.length < 3) throw "Too short!";
+
+                msg.innerText = "Accepted!";
+                msg.style.color = "green";
+            } 
+            catch (err) {
+                msg.innerText = "Error: " + err;
+                msg.style.color = "red";
+            }
+        };
+    </script>
+
+</body>
+</html>
