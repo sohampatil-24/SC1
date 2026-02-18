@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Checker</title>
+</head>
+<body>
+
+    <h2>Enter Your Marks</h2>
+    <input type="number" id="marks" placeholder="Enter marks">
+    <button onclick="runProgram()">Check Grade</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        // Function using switch
+        function getGrade(marks) {
+
+            let grade;
+
+            switch (true) {
+                case (marks >= 90):
+                    grade = "Grade A+";
+                    break;
+
+                case (marks >= 75):
+                    grade = "Grade A";
+                    break;
+
+                case (marks >= 60):
+                    grade = "Grade B";
+                    break;
+
+                case (marks >= 40):
+                    grade = "Grade C";
+                    break;
+
+                default:
+                    grade = "Fail";
+            }
+
+            return grade;
+        }
+
+        // Class
+        class Student {
+            constructor(name, marks) {
+                this.name = name;
+                this.marks = marks;
+            }
+
+            getResult() {
+                return this.name + " (" + this.marks + ") - " + 
+                       getGrade(this.marks);
+            }
+        }
+
+        function runProgram() {
+
+            let marksValue = document.getElementById("marks").value;
+            let marks = Number(marksValue);
+
+            let studentsList = [];   // Array
+
+            // Creating Objects
+            let students = [
+                new Student("Rahul", marks),
+                new Student("Sneha", marks),
+                new Student("Amit", marks)
+            ];
+
+            // Loop
+            for (let i = 0; i < students.length; i++) {
+                studentsList.push(students[i]);
+            }
+
+            let output = "";
+
+            // Display result
+            for (let i = 0; i < studentsList.length; i++) {
+                output += studentsList[i].getResult() + "<br>";
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+
+    </script>
+
+</body>
+</html>

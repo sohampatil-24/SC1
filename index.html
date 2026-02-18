@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Budget Checker</title>
+</head>
+<body>
+
+    <h2>Enter Your Shopping Budget</h2>
+    <input type="number" id="budget" placeholder="Enter budget">
+    <button onclick="runProgram()">Check Items</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        // Function (Condition inside)
+        function checkAffordable(price, budget) {
+            if (price <= budget) {   // Condition
+                return "Can Buy";
+            } else {
+                return "Cannot Buy";
+            }
+        }
+
+        // Class
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+            getResult(budget) {
+                return this.name + " (" + this.price + ") - " +
+                       checkAffordable(this.price, budget);
+            }
+        }
+
+        function runProgram() {
+
+            let budgetValue = document.getElementById("budget").value;
+            let budget = Number(budgetValue);
+
+            let productsList = [];   // Array
+
+            // Creating Objects
+            let items = [
+                new Product("Shoes", 2000),
+                new Product("Watch", 3500),
+                new Product("Bag", 1500)
+            ];
+
+            // Loop (adding objects to array)
+            for (let i = 0; i < items.length; i++) {
+                productsList.push(items[i]);
+            }
+
+            let output = "";
+
+            // Loop to display result
+            for (let i = 0; i < productsList.length; i++) {
+                output += productsList[i].getResult(budget) + "<br>";
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+
+    </script>
+
+</body>
+</html>
