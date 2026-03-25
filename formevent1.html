@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <title>Dropdown form</title>
+</head>
+<body>
+    <select onchange="ShowChange(event)">
+        <option value="">Select</option>
+        <option>Apple</option>
+        <option>Mango</option>
+        <option>Coconut</option>
+        <option>Banana</option>
+    </select>
+    <script>
+        function ShowChange(event){
+            alert("Option selected:"+event.target.value)
+        }
+    </script>
+</body>
+</html>
